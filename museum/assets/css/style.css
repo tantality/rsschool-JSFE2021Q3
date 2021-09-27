@@ -251,7 +251,7 @@ main{
     position: absolute;
     bottom: -25px;
     left: 0;
-    right: 0;
+    right: 40px;
     height: 3px;
     background-color:var(--dark-red);
 }
@@ -396,11 +396,30 @@ h3.card__title-underline::after {
 
 .explore__col1 {
     align-self: flex-start;
+    flex: 660px 0 0;
+}
+
+.background__col2{
+    background-image: url("../img/explore-slider/after.jpg");
+    min-height: 700px;
+    background-size: 720px 700px;
+    background-repeat: no-repeat;
+    width: 720px;
+    margin-top:15px;
+    position: relative;
 }
 
 .explore__col2 {
-    margin-top:15px;
+    max-width: 440px;
+    overflow: hidden;
     align-self: flex-end;
+}
+
+.explore-slider-runner{
+    position: absolute;
+    left: 58.5%;
+    top: 0;
+
 }
 
 .white__text{
