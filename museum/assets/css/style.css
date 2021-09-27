@@ -41,10 +41,6 @@ h4{
     padding: 51px 0 ;
 }
 
-.video-container{
-    padding-top: 90px;
-}
-
 .welcome__container{
     padding-top: 150px;
     padding-bottom: 0;
@@ -419,7 +415,6 @@ h3.card__title-underline::after {
     position: absolute;
     left: 58.5%;
     top: 0;
-
 }
 
 .white__text{
@@ -436,7 +431,6 @@ h3.card__title-underline::after {
 
 .explore__text p{
     margin-bottom: 25px;
-
 }
 
 .explore__text p:last-child {
@@ -445,14 +439,44 @@ h3.card__title-underline::after {
 
 .video__preview {
     background-image: url("../img/video.jpg");
-    min-height: 629px;
-    background-size: 1440px 629px;
+    min-height: 650px;
+    background-size: 1440px 650px;
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.video__video-slider{
+    margin: 40px 0;
+    display: flex;
+    column-gap: 42px;
+}
+
+.video__video-slider-pagination {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    column-gap: 20px;
+}
+
+.video-slider-pagination__circle{
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    background: #999999;
+}
+.video-slider-pagination__circle:hover{
+    background-color: #710707;
+}
+
+.video-slider-pagination__circle.active{
+    background: #333333;;
+}
+
+.video__video-slider-pagination svg:hover{
+     filter: invert(66%) sepia(0%) saturate(129%) hue-rotate(184deg) brightness(93%) contrast(86%);
+}
 
 .button{
     flex-shrink: 0;
@@ -466,8 +490,8 @@ h3.card__title-underline::after {
     background-color: #000;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 41px;
-    padding-right: 41px;
+    column-gap: 50px;
+    padding: 0 30px;
 }
 
 .video__play {
@@ -477,34 +501,15 @@ h3.card__title-underline::after {
     min-height: 220px;
 }
 
-.video__back {
-    background-image: url("../svg/back.svg");
-    background-size: 27px 30px;
-    width: 27px;
-    height: 30px;
-    flex-basis: 27px;
-    margin-right:41px;
-}
-
 .video__sm-play {
     background-image: url("../svg/sm-play.svg");
     background-size: 23px 30px;
     width: 23px;
     height: 30px;
-    margin-right:41px;
-}
-
-.video__forward {
-    background-image: url("../svg/forward.svg");
-    background-size: 27px 30px;
-    width: 27px;
-    height: 30px;
-    margin-right:41px;
 }
 
 .video__duration{
-    flex-basis: 820px;
-    margin-right:41px;
+    flex-basis: 930px;
 }
 
 .video__volume-status {
@@ -512,7 +517,6 @@ h3.card__title-underline::after {
     background-size: 38px 30px;
     width: 38px;
     height: 30px;
-    margin-right:20px;
 }
 
 .video__full-screen {
@@ -532,11 +536,10 @@ h3.card__title-underline::after {
 
 .video__volume {
     flex-basis: 155px;
-    margin-right:48px;
 }
 
 .progress{
-    background: linear-gradient(to right, #24809E 0%, #24809E 47%, #C4C4C4 40%, #C4C4C4 100%);
+    background: linear-gradient(to right, #710707 0%, #710707 54%, #C4C4C4 40%, #C4C4C4 100%);
     height: 7px;
     width: 2px;
     outline: none;
@@ -551,10 +554,10 @@ h3.card__title-underline::after {
     -webkit-appearance: none;
     cursor: ew-resize;
     background: #fff;
-  }
+}
 
 .progresss{
-    background: linear-gradient(to right, #24809E 0%, #24809E 47%, #C4C4C4 40%, #C4C4C4 100%);
+    background: linear-gradient(to right, #710707 0%, #710707 47%, #C4C4C4 40%, #C4C4C4 100%);
     height: 7px;
     width: 2px;
     outline: none;
@@ -569,11 +572,11 @@ h3.card__title-underline::after {
     -webkit-appearance: none;
     cursor: ew-resize;
     background: #fff;
-  }
+}
 
 .video__text-content {
     display: flex;
-    margin-top: 40px;
+    margin-bottom: 75px;
     column-gap: 115px;
     align-items: center;
 }
@@ -587,7 +590,6 @@ h3.card__title-underline::after {
 .tickets__col1 {
     margin-right: 60px;
 }
-
 
 .radiobuts-text{
     font-family: Roboto;
@@ -603,7 +605,6 @@ h3.card__title-underline::after {
     margin-right: 23px;
     padding: auto 0; 
 }
-
 
 .radiobut input[type=radio] {
 	display: none;
@@ -835,7 +836,6 @@ footer{
     column-gap: 156px;
     width: 366px;
 }
-
 
 .footer__col1{
     margin-right: 145px;
