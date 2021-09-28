@@ -140,7 +140,7 @@
                 <div class="container">
                     <div class="explore__row">
                         <div class="explore__col1">
-                            <h2 class="white-title underline-title title">Picture explore</h2>
+                            <h2 class="white-title explore-underline-title underline-title title">Picture explore</h2>
                             <div class="explore__text white__text text">
                                 <p>Las Meninas is a 1656 painting by Diego Velázquez, the leading <span class="block">artist of the Spanish Golden Age.</span></p>
                                 <p>It was cleaned in 1984 to remove a <span class="beige-color">"yellow veil"</span> of dust that had<span class="block"> gathered since the previous 
@@ -182,9 +182,9 @@
                         <button class="video__full-screen button"></button>
                     </div>
                     <div class="video__video-slider">
-                        <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video__video-slider-pagination">
                         <svg class="svg" width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -202,9 +202,9 @@
                 </div>
             </section>
 
-            <section class="tickets bg-section" id="tickets">
+            <section class="tickets" id="tickets">
                 <div class="container">
-                    <h2 class="white-title underline-title title">Buy tickets</h2>
+                    <h2 class="gold-title underline-title title">Buy tickets</h2>
                     <div class="tickets__row">
 
                         <div class="tickets__col1">
@@ -212,26 +212,26 @@
                         </div>
 
                         <div class="tickets__col2">
-                            <h4 class="white-title">Ticket Type</h4>
+                            <h4 class="black-title title-indent">Ticket Type</h4>
                             <div class="radiobut">
                                 <input type="radio" id="radiobut1" name="radio" value="per_ex" class="tickets__input" checked>
-                                <label for="radiobut1" class="white-title radiobuts-text">Permanent exhibition</label>
+                                <label for="radiobut1" class="black-title radiobuts-text">Permanent exhibition</label>
                             </div>
                             <div class="radiobut">
                                 <input type="radio" id="radiobut2" name="radio" value="temp_ex" class="tickets__input">
-                                <label for="radiobut2" class="white-title radiobuts-text">Temporary exhibition</label>
+                                <label for="radiobut2" class="black-title radiobuts-text">Temporary exhibition</label>
                             </div>
                             <div class="radiobut">
                                 <input type="radio" id="radiobut3" name="radio" value="combined" class="tickets__input">
-                                <label for="radiobut3" class="white-title radiobuts-text">Combined Admission</label>
+                                <label for="radiobut3" class="black-title radiobuts-text">Combined Admission</label>
                             </div>
 
                         </div>
 
                         <div class="tickets__col3" >
-                                <h4 class="tickets__white-title white-title">Amount</h4>
+                                <h4 class="tickets__title black-title">Amount</h4>
                                 <div class="tickets__group1 group">
-                                     <p class="tickets__text white__text text">Basic 18+</p>
+                                     <p class="tickets__text black__text text">Basic 18+</p>
                                         <div class="tickets__counter">
                                             <button class="tickets__button minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">—</button>
 	                                        <input type="number" min="0" max="20" value="1" readonly class="input_text text">
@@ -240,7 +240,7 @@
                                 </div>
 
                                 <div class="tickets__group2 group">
-                                    <p class="tickets__text white__text text">Senior 65+</p>
+                                    <p class="tickets__text black__text text">Senior 65+</p>
                                         <div class="tickets__counter">
                                             <button class="tickets__button minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">—</button>
                                             <input type="number" min="0" max="20" value="1" readonly class="input_text text">
@@ -254,6 +254,8 @@
                 </div>
             </section>
 
+            <div class="parallax"></div>
+
             <section class="contacts" id="contacts">
                 <div class="container">
                      <h2 class="gold-title underline-title title">Contacts</h2>
@@ -262,8 +264,8 @@
                                 <div class="contacts__subtitle subtitle"><p>Palais Royal <span class="block">Musee du Louvre</span></p></div>
                                 <address class="contacts__address">
                                     <p>address: 75001 Paris, France</p>
-                                    <p>phone: +33(0) 1 40 20 50 50</p>
-                                    <p>mail: info@louvre.fr</p>
+                                    <p><a href="tel:+33(0)140205050">phone: +33(0) 1 40 20 50 50</a></p>
+                                    <p><a href="mailto:info@louvre.fr">mail: info@louvre.fr</a></p>
                                 </address>
                         </div>
                         <img src="assets/img/map.png" width="960" height="620" alt="Map">
@@ -274,7 +276,7 @@
         </main>
         
         <footer>
-            <div class="container">
+            <div class="footer-container-1 container">
                 <div class="footer__row">
                     <div class="footer__col1 logo">
                         <a href="#">
@@ -286,11 +288,11 @@
                     </div>
                 
                     <nav>
-                         <ul class="footer__col2-nav footer__nav-text">
-                            <li style><a href="#welcome">Welcome</a></li>
-                            <li style><a href="#visiting">Visiting</a></li>
+                         <ul class="footer__col2-nav footer__text">
+                            <li><a href="#visiting">Visiting</a></li>
                             <li><a href="#explore">Explore</a></li>
                             <li><a href="#video">Video</a></li>
+                            <li><a href="#gallery">Gallery</a></li>
                             <li><a href="#tickets">Tickets</a></li>
                             <li><a href="#contacts">Contacts</a></li>
                          </ul>
@@ -328,6 +330,15 @@
                             </div>
                         </a>
                     </div>
+                </div>
+                
+            </div>
+            <hr>
+            <div class="footer-container-2 container">
+                <div class="footer__text footer__container2-row">
+                    <div class="text__year" >© 2021</div>
+                    <div class="text__school">The Rolling Scopes School</div>
+                    <div class="text__nickname"><a href="https://github.com/tantality">tantality</a></div>
                 </div>
             </div>
         </footer>

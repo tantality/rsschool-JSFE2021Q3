@@ -238,6 +238,11 @@ main{
     color: #fff;
 }
 
+.black-title{
+    color: #000;
+}
+
+
 .underline-title {
     position: relative;
 }
@@ -247,9 +252,13 @@ main{
     position: absolute;
     bottom: -25px;
     left: 0;
-    right: 40px;
+    right: 0px;
     height: 3px;
     background-color:var(--dark-red);
+}
+
+.explore-underline-title::after{
+    right: 40px;
 }
 
 .welcome__subtitle {
@@ -298,6 +307,10 @@ main{
 
 .welcome__button-main:hover, .tickets__buy-but:hover{
     background-color: var(--font-gold);
+}
+
+.tickets__buy-but:hover{
+    color: #000;
 }
 
 .visiting__gallery {
@@ -597,7 +610,6 @@ h3.card__title-underline::after {
     font-weight: 300;
     font-size: 22px;
     line-height: 26px;
-    color: #FFFFFF;
 }
 
 
@@ -630,20 +642,26 @@ h3.card__title-underline::after {
 	position: absolute;
 	left: 0;
     top:2px;
-	background: url("../svg/rb_empty.svg") 0 0 no-repeat;
+	background: url("../svg/rb-empty-bl.svg") 0 0 no-repeat;
 }
  
 .radiobut input[type=radio]:checked + label:before {
-    background: url("../svg/rb_fill.svg") 0 0 no-repeat;
+    background: url("../svg/rb-fill-bl.svg") 0 0 no-repeat;
 }
 
+.radiobut{
+    margin-bottom: 27px;
+}
 .tickets__col2 {
     margin-right: 215px;
     display: flex;
     flex-direction:column;
     justify-content: flex-start;
     align-items: flex-start;
-    row-gap: 50px;
+}
+
+.title-indent{
+    margin-bottom: 52px;
 }
 
 .tickets__col3 {
@@ -656,16 +674,16 @@ h3.card__title-underline::after {
     align-self: flex-end;
 }
 
-.tickets__white-title{
+.tickets__title{
     align-self: flex-end;
 }
 
 .tickets__group1 {
-    margin-top: 11px;
+    margin-top: 27px;
 }
 
 .tickets__group2{
-    margin-top: 35px;
+    margin-top: 12px;
 }
 
 .text {
@@ -679,7 +697,7 @@ h3.card__title-underline::after {
 .input__text {
     line-height: 26px;
     text-align: center;
-    color: #fff;
+    color: #000;
 }
 
 .tickets__counter {
@@ -694,7 +712,7 @@ h3.card__title-underline::after {
 	position: relative;
 	width: 150px;
     min-height: 50px;
-    border: 3px solid #fff;
+    border: 3px solid #000;
 }
 
 .tickets__counter input[type="number"] {
@@ -707,8 +725,8 @@ h3.card__title-underline::after {
 	-moz-appearance: textfield;
 	-webkit-appearance: textfield;
 	appearance: textfield;
-    background-color: var(--bg-dark);
-    color:#fff;
+    background-color: #fff;
+    color:#000;
 }
 
 .tickets__counter input[type="number"]::-webkit-outer-spin-button,
@@ -723,8 +741,8 @@ h3.card__title-underline::after {
     font-size: 32px;
     line-height: 37px;
     text-align: center;
-    color: #FFFFFF;
-    background-color: var(--bg-dark);
+    color: #000;
+    background-color: #fff;
 }
 
 .tickets__total{
@@ -734,7 +752,7 @@ h3.card__title-underline::after {
     font-size: 28px;
     line-height: 33px;
     letter-spacing: 1.65px;
-    color: #FFFFFF;
+    color: #000;
 }
 
 .minus {
@@ -760,7 +778,7 @@ h3.card__title-underline::after {
 	border: none;
 }
 
-.plus:hover,.minus:hover{
+.plus:hover,.minus:hover,.text__nickname a:hover{
     color:var(--font-gold);
 }
 
@@ -772,27 +790,37 @@ h3.card__title-underline::after {
     line-height: 26px;
     text-align: center;
     letter-spacing: 2px;
-    color: #000;
+    color: #fff;
 }
 
 .tickets__buy-but{
     align-self: flex-end;
-    margin-top: 50px;
+    margin-top: 60px;
     width:175px;
     height:50px;
     border-radius: 2px;
-    background-color: #fff;
+    background-color: #000;
 }
 
+.parallax{
+    width: 100%;
+    height: 400px;
+    background-image: url("../img/parallax.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    /* background-size: 38px 30px; */
+}
+
+
 .contacts__row {
-    margin-top: 103px;
+    margin-top: 100px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
 
 .contacts__col {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .contacts__subtitle {
@@ -801,7 +829,7 @@ h3.card__title-underline::after {
 }
 
 .contacts__address {
-    margin-top: 36px;
+    margin-top: 50px;
 }
 
 .contacts__address p{
@@ -811,7 +839,11 @@ h3.card__title-underline::after {
     font-size: 22px;
     line-height: 26px;
     color: #000;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.contacts__address p a{
+    color:#000;
 }
 
 .contacts__address :last-child {
@@ -820,7 +852,15 @@ h3.card__title-underline::after {
 
 footer{
     background-color: var(--bg-dark);
-    height: 300px;
+    height: 392px;
+}
+
+.footer-container-1{
+    padding-bottom: 40px;
+}
+
+.footer-container-2{
+    padding: 35px 0;
 }
 
 .footer__row{
@@ -833,7 +873,7 @@ footer{
     flex-direction: column;
     flex-wrap: wrap;
     align-content: flex-start;
-    column-gap: 156px;
+    column-gap: 165px;
     width: 366px;
 }
 
@@ -841,8 +881,14 @@ footer{
     margin-right: 145px;
 }
 
+.footer__container2-row{
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+}
 
-.footer__nav-text{
+
+.footer__text{
     font-family: Roboto;
     font-style: normal;
     font-weight: 200;
@@ -850,6 +896,18 @@ footer{
     line-height: 50px;
     letter-spacing: 2px;
     color: #FFF;
+}
+
+.text__year {
+    margin-right: 488px;
+}
+
+.text__school {
+    margin-right: 457px;
+}
+
+.text__nickname a{
+    color: #fff;
 }
 
 .circle-col{
@@ -873,13 +931,18 @@ footer{
     width: 24px;
     height: 24px;
 }
+hr{
+    display: block;
+    height: 3px;
+    background-color: #666666;
+}
 
 .footer__col3{
     display: inline-flex;
     align-items: flex-end;
-    margin-left: 398px;
+    margin-left: 390px;
     column-gap: 24px;
-    margin-bottom: 14px;
+    margin-bottom: 15px;
 }
 
 .footer__youtube {
