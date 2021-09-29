@@ -37,6 +37,42 @@ h4{
     padding: 75px 0;
 }
 
+.art-gallery__container{
+    padding-bottom: 0;
+    overflow-y: hidden;
+    height: 2200px;
+    position: relative;
+}
+
+.art-gallery__container::after{
+    position: absolute;
+    left:0;
+    bottom: 0;
+    height: 360px;
+    content: '';
+    width: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+}
+
+.art-gallery-inner-container{
+    padding-top: 75px;
+    height: 3000px;
+    display: flex;
+    flex-flow: column wrap;
+    column-gap: 36px;
+    row-gap:24px;    
+}
+
+.gallery-img:nth-child(1), .gallery-img:nth-child(11) {
+    padding-top: 50px;
+}
+
+.art-gallery-inner-container img{
+    width: 456px;
+    height: auto;
+}
+
+
 .header__container{
     padding: 51px 0 ;
 }
@@ -193,12 +229,14 @@ main{
     justify-content: flex-start;
     align-content: center; 
     column-gap: 20px;
+    
 }
 
 .arrow{
     width: 30px;
     min-height: 8px;
     align-self: center;
+    background: none;
 }
 
 .slide-pagination.active:hover{
