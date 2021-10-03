@@ -7,6 +7,8 @@
     <title>Museum</title>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="icon" href="assets/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap" rel="stylesheet">
@@ -34,6 +36,47 @@
                             <li><a class="link" href="#tickets">Tickets</a></li>
                             <li><a class="link" href="#contacts">Contacts</a></li>
                         </ul>
+                        <div class="header__additional-info">
+                            <div class="additional-info__pictures">
+                                <img src="assets/img/menu/1.jpg" alt="picture 1">
+                                <img src="assets/img/menu/2.jpg" alt="picture 2">
+                                <img src="assets/img/menu/3.jpg" alt="picture 3">
+                            </div>
+                            <hr>
+                            <div class="additional-info__social-networks">
+                                
+                                <a href="https://www.youtube.com/user/louvre" >
+                                    <div class="circle circle-col">
+                                        <div class="footer__youtube social-icon"></div>
+                                    </div>
+                                </a>
+                                
+                                <a href="https://www.instagram.com/museelouvre/">
+                                    <div class="circle circle-col">
+                                        <div class="footer__instagram social-icon"></div>
+                                    </div>
+                                </a>
+
+                                <a href="https://www.facebook.com/museedulouvre">
+                                    <div class="circle circle-col">
+                                        <div class="footer__facebook social-icon"></div>
+                                    </div>
+                                </a>
+
+                                <a href="http://twitter.com/museelouvre">
+                                    <div class="circle circle-col">
+                                        <div class="footer__twitter social-icon"></div>
+                                    </div>
+                                </a>
+
+                                <a href="https://www.pinterest.fr/museedulouvre/">
+                                    <div class="circle circle-col">
+                                        <div class="footer__pinterest social-icon"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
                     </nav>
 
                     <button class="burger button" type="button">
@@ -283,7 +326,9 @@
                                     <p><a href="mailto:info@louvre.fr">mail: info@louvre.fr</a></p>
                                 </address>
                         </div>
-                       <div class="contacts__map"><img src="assets/img/map.png"  alt="Map"></div> 
+                       <div  class="contacts__map">
+                           <img src="assets/img/map.png"  alt="Map">
+                        </div> 
                      </div>
                 </div>
             </section>
@@ -359,6 +404,7 @@
         </footer>
 
     </div>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
     <script src="assets/index.js"></script>
 </body>
 </html>

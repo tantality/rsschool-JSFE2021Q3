@@ -45,5 +45,17 @@ burgerIcon.addEventListener('click', function(e) {
 });
 
 document.addEventListener('click', function(e) {
-    if ( e.target!= menu && e.target!= burgerIcon && menu.classList.contains('open') || e.target.closest('.link')) toggleMenu();
+    if ( e.target.closest('.nav')!= menu && e.target!= burgerIcon && menu.classList.contains('open') || e.target.closest('.link') || e.target.closest('.additional-info__social-networks')){ 
+      console.log(e.target);
+      toggleMenu();
+    }
 });
+
+
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoidGFudGFsaXR5IiwiYSI6ImNrdWJ1YTcyaDByemMybm12MXR3ZW55OTMifQ.AClSeJjIqoAnx5Ifygvx4w';
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v10'
+    });
+
