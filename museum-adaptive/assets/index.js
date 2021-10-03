@@ -29,5 +29,21 @@ generateGallery();
 
 
 
-console.log(" Привет! Хотела бы попросить проверить работу позже, если есть такая возможность. Спасибо!\n-Вёрстка валидная +10.\n-Вёрстка семантическая +24. \n-Вёрстка соответствует макету +45.\n-Форма покупки билетов +0/22.\n-Требования к css + 18.\n-Интерактивность, реализуемая через css +20/25.\n\tОтсутствует:\n1)при кликам по кнопке Discover the Louvre и карточкам секции Visiting открываются полноэкранные панорамы Google Street View встроенные в страницы вашего сайта при помощи iframe -5\n-Интерактивность, реализуемая через js +14/16.\n\tОтсутствует:\n1)кнопке 'Book' в форме покупки билетов добавлен ripple-эффект Демо -2 \nИтого 131/160");
+const menu = document.querySelector('.nav');
+const burgerIcon = document.querySelector('.burger');
+const welcomeCol=document.querySelector('.welcome__column')
 
+function toggleMenu() {
+  menu.classList.toggle('open');
+  burgerIcon.classList.toggle('open');
+  welcomeCol.classList.toggle('opacity-none');
+}
+
+burgerIcon.addEventListener('click', function(e) {
+    e.stopPropagation();
+    toggleMenu();
+});
+
+document.addEventListener('click', function(e) {
+    if ( e.target!= menu && e.target!= burgerIcon && menu.classList.contains('open') || e.target.closest('.link')) toggleMenu();
+});

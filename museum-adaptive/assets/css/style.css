@@ -149,7 +149,7 @@ header{
 .header__nav li a:hover,.footer__col2-nav li a:hover, a .logo-text:hover {
     color: var(--font-gold); 
 }
-.header__nav li a:active,.footer__col2-nav li a:active, a .logo-text:active {
+.header__nav li a:active,.footer__col2-nav li a:active, a .logo-text:active{
     color: var(--font-gold); 
 }
 
@@ -190,7 +190,6 @@ main{
     font-size: 22px;
     line-height: 40px;
     display: flex;
-    /* flex-direction: column; */
     justify-content: flex-start;
     align-content: center;
 }
@@ -201,7 +200,7 @@ main{
     display: flex;
     justify-content: flex-start;
     align-content: center; 
-    column-gap: 13px;
+    column-gap: 11px;
     align-self: center;
     margin-right: 55px;
 }
@@ -289,7 +288,7 @@ main{
 .underline-title::after {
     content: "";
     position: absolute;
-    bottom: -25px;
+    bottom: -27px;
     left: 0;
     right: 0px;
     height: 3px;
@@ -383,7 +382,7 @@ h3.card__title-underline{
 h3.card__title-underline::after {
     content: "";
     position: absolute;
-    bottom: -9px;
+    bottom: -11px;
     left: 0;
     right: 140px;
     height: 2px;
@@ -408,7 +407,7 @@ h3.card__title-underline::after {
 }
 
 .card__subtitle {
-    margin-top:21px;
+    margin-top:22px;
 }
 
 .card-subtitle {
@@ -489,6 +488,17 @@ h3.card__title-underline::after {
     margin-bottom:0px;
 }
 
+
+
+
+                                        /* VIDEO */
+
+.current-video{
+    width: 100%;
+    height: auto;
+    max-height: 735px;
+}
+                                        
 .video__preview {
     background-image: url("../img/video.jpg");
     min-height: 650px;
@@ -755,15 +765,14 @@ h3.card__title-underline::after {
 }
 
 .tickets__counter input[type="number"] {
-	display: block;
+	display: flex;
+    align-items: center;
+    justify-content: center;
 	width: 100%;
-	padding: 0;
+    height: 48px;
 	margin: 0;
 	box-sizing: border-box;
 	text-align: center;
-	-moz-appearance: textfield;
-	-webkit-appearance: textfield;
-	appearance: textfield;
     background-color: #fff;
     color:#000;
 }
@@ -1004,4 +1013,535 @@ hr{
 
 a .circle:hover, a .circle:focus{
     filter: invert(60%) sepia(5%) saturate(2625%) hue-rotate(356deg) brightness(89%) contrast(78%);
+}
+
+
+@media (max-width: 1024px) {
+
+   
+    h2{
+        /* font-size: 50px; */
+        line-height: 90px;
+    }
+
+    .container{
+        max-width: 984px;
+        margin: 0  20px;
+        padding: 60px 0;
+    }
+
+
+                                                /* welcome section,header */
+    
+    .burger{
+        align-self: center;
+        display: block;
+        background-size: 32px 18px;
+        width: 32px;
+        height: 18px;
+        background-image: url("../svg/burger.svg");
+        background-repeat: no-repeat;
+    }
+
+    .burger.default{
+        background-size: 32px 18px;
+        width: 32px;
+        height: 18px;
+        background-image: url("../svg/burger.svg");
+        background-repeat: no-repeat;
+    }
+
+    .burger.open{
+        background-image: url("../svg/burger-close.svg");
+        background-size: 25px 25px;
+        width: 25px;
+        height: 25px;
+        background-repeat: no-repeat;
+    }
+
+    .header__row {
+        justify-content: space-between;
+        column-gap: 0;
+    }
+
+    .header__container{
+        padding: 41px 0 ;
+    }
+
+    .nav{
+        position: absolute;
+        top:130px;
+        left:-297px;
+        width:297px;
+        height: 585px;
+        background-color: var(--bg-dark);
+        transition: 0.5s;
+        z-index: 1;
+    }
+
+    .nav.open{
+        left:0;
+    }
+
+    .header__nav{
+        flex-direction: column;
+        padding-left: 55px;
+        padding-top: 35px;
+    }
+
+    .header__nav li {
+        position: relative;
+        margin-bottom:25px ;
+    }
+
+    .header__nav li a{
+        font-size: 21px;
+        line-height: 23px;
+    }
+
+    .header__nav li a::after{
+        content: "";
+        position: absolute;
+        left: 113px;
+        top:6px;
+        width: 12px;
+        height: 12px;
+        background-image: url("../svg/burger-item-arrow.svg");
+        background-size: 12px 12px;
+        background-repeat: no-repeat;
+    }
+
+    header{
+        height: 130px;
+    }
+
+    .welcome__container{
+        padding-top: 50px;
+        padding-bottom: 0;
+    }
+    
+
+    .opacity-none{
+        opacity: 0;
+    }
+
+    .title {
+        font-size: 50px;
+        line-height: 75px;
+    }
+
+    .welcome {
+        min-height: 525px;
+        background-size: 700px 525px;
+        background-position: calc(50% + 142px) 0%;
+    }
+
+    .welcome__title{
+        line-height: 90px;
+    }
+
+    .subtitle{
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .welcome__subtitle{
+        margin-top: 25px;
+        margin-bottom: 50px;
+    }
+
+    .button-main-text {
+        font-size: 20px;
+        line-height: 23px;
+    }
+    
+    .welcome__button-main{
+        width:300px;
+        height:60px;
+    }
+
+    .welcome__slider-panel {
+        margin-top: 76px;
+    }
+
+    .slider-panel-row{
+        width: 700px;
+        padding-left: 224px;
+        padding-right: 75px;
+    }
+
+    
+    .slider-panel-numbers{
+        font-size: 20px;
+        margin-right: 45px;
+    }
+    
+    .carousel-pagination{
+        margin-right: 45px;
+    }
+    
+    .slide-pagination{
+        width: 12px;
+        height: 12px;
+    }
+
+                                                /* visiting section */
+    
+    
+    .gallery {
+        justify-content:space-between;
+        gap:62px 11%;
+        margin:0 11%;
+        flex-wrap: wrap;
+    }
+    
+    .visiting__gallery {
+        margin-top: 82px;
+    }
+
+    .card {
+        flex: 40% 1 1;
+        max-width: 330px;
+    }
+    
+    .card img{
+        display: block;
+        /* max-width: 330px; */
+        width: 100%;
+        height: auto;
+    }
+
+    .card-title{
+        font-size: 28px;
+        line-height: 31px;
+        letter-spacing: 3px;
+    }
+
+    .underline-title::after {
+        bottom: -22px;
+    }
+
+    h3.card__title-underline::after{
+        bottom: -13px;
+        width: 45%;
+    }
+
+    .card-subtitle {
+        font-size: 20px;
+        line-height: 23px;
+    }
+
+    .card-text {
+        font-size: 16px;
+        line-height: 19px;
+    }
+    
+                                                /* explore section */
+    
+    .explore__row {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 63px;
+    }
+
+    .block.undo{
+        display: none;
+        display: inline;
+    }
+
+    .explore__col1 {
+        flex-grow: 1;
+        flex-shrink: 1;
+        width: 100%;
+    }
+
+    .explore-underline-title::after {
+        right: 0;
+    }
+
+    .text{
+        font-size: 20px;
+        line-height: 36px;
+    }
+
+    .background__col2{
+        margin: 0 132px;
+        background-size: 100% auto;
+    }
+
+    .explore__col2 {
+        max-width: 61.1%;
+        overflow: hidden;
+    }
+
+    .explore-slider-runner{
+        position: absolute;
+        left: 58.5%;
+        top: 0;
+    }
+
+    .explore__text{
+        margin-top: 83px;
+    }
+
+    .display{
+        display: block;
+    }
+
+    .display-none{
+        display: none;
+    }
+
+    .explore__text p{
+        margin-bottom: 0;
+    }
+
+
+                                                /* art gallery section */
+
+    .art-gallery__container {
+         height: 1460px;
+    }
+
+    .art-gallery-inner-container {
+        padding-top: 60px;
+        height: 2000px;
+    }   
+
+    .art-gallery-inner-container img{
+        max-width: 304px;
+        display: block;
+        width:33.3%;
+        height: auto;
+    }
+
+                                               /* tickets section */
+    .tickets__row {
+        margin-top: 83px;
+        justify-content: space-between;
+        column-gap: 80px;
+    }
+
+    .tickets__col3{
+        width: 25%;
+        margin-right: 5px;
+        justify-content: flex-start;
+    }
+
+    .tickets__col1{
+        margin: 0;
+        max-width: 700px;
+        width: 85%;
+        flex-shrink: 1;
+        flex-grow: 1;
+    }
+
+    .tickets__col1 img{
+        max-width: 700px;
+        max-height: 440px;
+        width: 100%;
+        height: auto;
+    }
+
+    .tickets__title,.group,.tickets__total,.tickets__buy-but{
+            align-self: flex-start;
+    }
+    .tickets__text.text{
+            font-size: 22px;
+            line-height: 26px;
+    }
+
+    .tickets__counter {
+        display: inline-block;
+        position: relative;
+        width: 175px;
+        min-height: 50px;
+        border: 3px solid #000;
+    }
+
+    .tickets__counter {
+        margin-top: 10px;
+    }
+
+    .tickets__group2{
+        margin-top: 25px;
+    }
+
+    .tickets__total{
+        margin-top: 21px;
+        font-size: 28px;
+    }
+
+    .total{
+        display: inline-flex;
+        width:35%;
+        justify-content: flex-end;
+    }
+    .tickets__buy-but {
+        margin-top: 69px;
+    }
+
+                                               /* contacts section */
+    .contacts__row {
+        margin-top: 83px;
+        column-gap: 16px;
+        row-gap: 40px;
+        justify-content: flex-start;
+    }
+
+    .contacts__col {
+        margin-top: 0;
+        max-width: 270px;
+        flex-shrink: 1;
+        flex-grow: 1;
+        width: 270px;
+        flex-basis: 220px;
+    }
+
+    .contacts__map{
+        width: 70%;
+    }
+
+    .contacts__row img{
+        width:101%;
+        height: auto;
+    }
+
+    .contacts__subtitle {
+        font-weight: 600;
+    }
+
+    .contacts__address p {
+        font-size: 20px;
+        line-height: 23px;
+        margin-bottom: 15px;
+    }
+
+    .contacts__address {
+        margin-top: 35px;
+    }
+                                              /* footer */
+    .footer-container-1 {
+        padding-top: 54px;
+        padding-bottom: 37px;
+    }
+
+    .footer__container2-row {
+        justify-content: flex-start;
+        align-content: center;
+    }
+
+    .footer-container-2 {
+        padding: 50px 0;
+    }
+    
+    .footer__col1 {
+        margin-top: 2px;
+        margin-right: 40px;
+    }
+
+    .footer__col2-nav{
+        padding-top:17px;
+        column-gap: 120px;
+        row-gap: 28px;
+        width: 313px;
+    }
+
+    .footer__col3{
+        margin-left: 92px;
+        column-gap: 24px;
+        margin-top:93px ;
+    }
+    
+    .footer__text {
+        line-height: 22px;
+    }
+
+    .text__year {
+        margin-right: 260px;
+    }
+
+    .text__school {
+        margin-right: 229px;
+    }
+
+    footer {
+        height: 368px;
+    }
+    
+
+                                                                /* VIDEO */
+
+    .current-video{
+        width: 100%;
+        height: auto;
+        max-height: 504px;
+    }
+
+    .video__text-content{
+        margin-bottom: 40px;
+    }
+
+    .video__preview {
+        width: 100%;
+        height: 444px;
+        min-height: 0;
+        max-height:444px;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .video__play {
+        min-height: 152px;
+        align-self: center;
+        background-size:100%;
+        height: 20%;
+        width: 152px;
+        max-height: 152px;
+        background-repeat: no-repeat;
+    }
+    
+    .video__panel {
+        width: 100%;
+        height: 60px;
+        justify-content: flex-start;
+        align-items: center;
+        column-gap: 31px;
+        padding: 0 40px;
+    }
+
+    .video__duration {
+        max-width:564px;
+    }
+
+    .video__volume-status {
+        background-size: 26px 20px;
+        width: 26px;
+        height: 20px;
+    }
+
+    .video__volume {
+        width:155px;
+    }
+    
+    .progress{
+        height: 5px;
+    }
+
+    .video__full-screen {
+        background-size: 26px 26px;
+        width: 26px;
+        height: 26px;
+    }
+
+    .video__video-slider{
+        height: 170px;
+    }
+
+    .video__video-slider iframe{
+        height: auto;
+    }
 }

@@ -24,17 +24,21 @@
                             <h1 class="logo-text">Louvre</h1>
                         </a>
                     </div>
-
-                    <nav>
+                    
+                    <nav class="nav">
                         <ul class="header__nav">
-                            <li style><a href="#visiting">Visiting</a></li>
-                            <li><a href="#explore">Explore</a></li>
-                            <li><a href="#video">Video</a></li>
-                            <li><a href="#gallery">Gallery</a></li>
-                            <li><a href="#tickets">Tickets</a></li>
-                            <li><a href="#contacts">Contacts</a></li>
+                            <li><a class="link" href="#visiting">Visiting</a></li>
+                            <li><a class="link" href="#explore">Explore</a></li>
+                            <li><a class="link" href="#video">Video</a></li>
+                            <li><a class="link" href="#gallery">Gallery</a></li>
+                            <li><a class="link" href="#tickets">Tickets</a></li>
+                            <li><a class="link" href="#contacts">Contacts</a></li>
                         </ul>
                     </nav>
+
+                    <button class="burger button" type="button">
+                        <!-- default -->
+                    </button>
                 </div>
 
             </div>
@@ -43,7 +47,7 @@
             <section class="welcome bg-section" id="welcome">
                 <div class="welcome__container container">
                         <div class="welcome__column">
-                            <h2 class="title">Welcome<span class="block">to the Louvre</span></h2>
+                            <h2 class="title welcome__title">Welcome<span class="block">to the Louvre</span></h2>
                             <div class="welcome__subtitle subtitle"><p>From the castle to the museum</p></div>
                             <div class="welcome__button-main button-main">
                                 <a href="tours/tour1.html">
@@ -53,7 +57,7 @@
                         </div>
                         <div class="welcome__slider-panel">
                             <div class="slider-panel-row">
-                                    <div class="slider-panel-numbers">
+                                    <div class="slider-panel-numbers text">
                                         <p>01</p>
                                         <p>|</p>
                                         <p>05</p>
@@ -80,7 +84,7 @@
                         <div class="visiting__gallery gallery">
                             <div class="card">
                                 <a href="tours/tour2.html">
-                                    <img src="assets/img/royal_palace.jpg" width="440" height="285" alt="Royal Palace">
+                                    <img src="assets/img/royal_palace.jpg" alt="Royal Palace">
                                     <h3 class="card__title-underline card__title card-title">Royal Palace</h3>
                                     <p class="card__subtitle card-subtitle">360° Virtual Tour</p>
                                     <p class="card__text card-text">Google Street Panorama View</p>
@@ -89,7 +93,7 @@
 
                             <div class="card">
                                 <a href="tours/tour3.html">
-                                    <img src="assets/img/denon_wing.jpg" width="440" height="285" alt="Denon Wing">
+                                    <img src="assets/img/denon_wing.jpg" alt="Denon Wing">
                                     <h3 class="card__title-underline card__title card-title">Denon Wing</h3>
                                     <p class="card__subtitle card-subtitle">360° Virtual Tour</p>
                                     <p class="card__text card-text">Google Street Panorama View</p>
@@ -98,7 +102,7 @@
 
                             <div class="card">
                                 <a href="tours/tour4.html">
-                                    <img src="assets/img/colonnade_perrault.jpg" width="440" height="285" alt="Colonnade Perrault">
+                                    <img src="assets/img/colonnade_perrault.jpg" alt="Colonnade Perrault">
                                     <h3 class="card__title-underline card__title card-title">Colonnade Perrault</h3>
                                     <p class="card__subtitle card-subtitle">360° Virtual Tour</p>
                                     <p class="card__text card-text">Google Street Panorama View</p>
@@ -107,7 +111,7 @@
 
                             <div class="card">
                                 <a href="tours/tour5.html">
-                                    <img src="assets/img/greek_hall.jpg" width="440" height="285" alt="Greek Hall">
+                                    <img src="assets/img/greek_hall.jpg" alt="Greek Hall">
                                     <h3 class="card__title-underline card__title card-title">Greek hall</h3>
                                     <p class="card__subtitle card-subtitle">360° Virtual Tour</p>
                                     <p class="card__text card-text">Google Street Panorama View</p>
@@ -116,7 +120,7 @@
 
                             <div class="card">
                                 <a href="tours/tour6.html">
-                                    <img src="assets/img/mona_lisa.jpg" width="440" height="285" alt="Mona Lisa">
+                                    <img src="assets/img/mona_lisa.jpg" alt="Mona Lisa">
                                     <h3 class="card__title-underline card__title card-title">Mona Lisa</h3>
                                     <p class="card__subtitle card-subtitle">360° Virtual Tour</p>
                                     <p class="card__text card-text">Google Street Panorama View</p>
@@ -125,7 +129,7 @@
 
                             <div class="card">
                                 <a href="tours/tour7.html">
-                                    <img src="assets/img/night_palace.jpg" width="440" height="285" alt="Night Palace">
+                                    <img src="assets/img/night_palace.jpg"  alt="Night Palace">
                                     <h3 class="card__title-underline card__title card-title">Night Palace</h3>
                                     <p class="card__subtitle card-subtitle">360° Virtual Tour</p>
                                     <p class="card__text card-text">Google Street Panorama View</p>
@@ -142,16 +146,16 @@
                         <div class="explore__col1">
                             <h2 class="white-title explore-underline-title underline-title title">Picture explore</h2>
                             <div class="explore__text white__text text">
-                                <p>Las Meninas is a 1656 painting by Diego Velázquez, the leading <span class="block">artist of the Spanish Golden Age.</span></p>
-                                <p>It was cleaned in 1984 to remove a <span class="beige-color">"yellow veil"</span> of dust that had<span class="block"> gathered since the previous 
+                                <p>Las Meninas is a 1656 painting by Diego Velázquez, the leading <span class="block undo">artist of the Spanish Golden Age.</span></p>
+                                <p>It was cleaned in 1984 to remove a <span class="beige-color">"yellow veil"</span> of dust that had<span class="block undo"> gathered since the previous 
                                     restoration in the 19th century.</span></p>
-                                <p>The cleaning provoked furious protests, not because the picture had been damaged in any way, but
+                                <p class="display-none">The cleaning provoked furious protests, not because the picture had been damaged in any way, but
                                      because it looked different.</p>
                             </div>
                         </div>
                         <div class="background__col2">
                             <div class="explore__col2">
-                                <img src="assets/img/explore-slider/before.jpg" width="720" height="700" alt="Las Meninas">
+                                <img src="assets/img/explore-slider/before.jpg"  alt="Las Meninas">
                                 <svg class="explore-slider-runner" width="39" height="700" viewBox="0 0 39 700" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 365C27.5081 365 34 358.508 34 350.5C34 342.492 27.5081 336 19.5 336C11.4919 336 5 342.492 5 350.5C5 358.508 11.4919 365 19.5 365ZM19.5 370C30.2696 370 39 361.27 39 350.5C39 339.73 30.2696 331 19.5 331C8.73045 331 0 339.73 0 350.5C0 361.27 8.73045 370 19.5 370Z" fill="white"/>
                                     <path d="M17 0H22V332H17V0Z" fill="white"/>
@@ -168,18 +172,21 @@
                 <div class="video-container container">
                     <div class="video__text-content">
                         <h2 class="gold-title title">Video journey</h2>
-                        <p class="black-text text">Enter and visit one of the most famous museums in the world
+                        <p class="black-text text display-none">Enter and visit one of the most famous museums in the world
                              and enjoy<span class="block">masterpieces such as Mona Lisa or Hammurabi's Code</span> </p>
                     </div>
-                    <div class="video__preview">
-                        <button class="video__play button"> </button>
-                    </div>
-                    <div class="video__panel">
-                        <button class="video__sm-play button"></button>
-                        <input type="range" class="video__duration progress" value="54" min="0" max="100" step="1">
-                        <button class="video__volume-status button"></button>
-                        <input type="range" class="video__volume progresss" value="42" min="0" max="100" step="1">
-                        <button class="video__full-screen button"></button>
+
+                    <div class="current-video">
+                        <div class="video__preview">
+                            <button class="video__play button"> </button>
+                        </div>
+                        <div class="video__panel">
+                            <button class="video__sm-play button"></button>
+                            <input type="range" class="video__duration progress" value="54" min="0" max="100" step="1">
+                            <button class="video__volume-status button"></button>
+                            <input type="range" class="video__volume progresss" value="42" min="0" max="100" step="1">
+                            <button class="video__full-screen button"></button>
+                        </div>
                     </div>
                     <div class="video__video-slider">
                         <iframe width="452" height="254" loading="lazy" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -206,7 +213,6 @@
                 <div class="art-gallery__container container">
                     <h2 class="white-title title">Art gallery</h2>
                     <div class="art-gallery-inner-container">
-    
                     </div>
                 </div>
             </section>
@@ -217,10 +223,10 @@
                     <div class="tickets__row">
 
                         <div class="tickets__col1">
-                            <img src="assets/img/shield_of_aeneas.jpg" width="720" height="550" alt="Shield of Aeneas">
+                            <img src="assets/img/shield_of_aeneas.jpg"  alt="Shield of Aeneas">
                         </div>
 
-                        <div class="tickets__col2">
+                        <div class="tickets__col2 display-none">
                             <h4 class="black-title title-indent">Ticket Type</h4>
                             <div class="radiobut">
                                 <input type="radio" id="radiobut1" name="radio" value="per_ex" class="tickets__input" checked>
@@ -256,7 +262,7 @@
                                             <button class="tickets__button plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
                                          </div>
                                 </div>
-                                <p class="tickets__total text">Total €220</p>
+                                <p class="tickets__total text">Total €<span class="total">220</span></pre>
                                 <button class="tickets__buy-but but" type="button">Buy Now</button>
                         </div>
                     </div>
@@ -277,7 +283,7 @@
                                     <p><a href="mailto:info@louvre.fr">mail: info@louvre.fr</a></p>
                                 </address>
                         </div>
-                        <img src="assets/img/map.png" width="960" height="620" alt="Map">
+                       <div class="contacts__map"><img src="assets/img/map.png"  alt="Map"></div> 
                      </div>
                 </div>
             </section>
