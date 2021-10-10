@@ -220,14 +220,13 @@
                     </div>
 
                     <div class="current-video">
-                        <div class="video__preview">
-                            <button class="video__play button"> </button>
-                        </div>
+                        <video class="current-video__viewer" src="assets/video/video0.mp4" poster="assets/video/poster0.jpg"></video>
+                        <button class="video__play button"></button>
                         <div class="video__panel">
-                            <button class="video__sm-play button"></button>
-                            <input type="range" class="video__duration progress" value="54" min="0" max="100" step="1">
-                            <button class="video__volume-status button"></button>
-                            <input type="range" class="video__volume progresss" value="42" min="0" max="100" step="1">
+                            <button class="video__sm-play button pause"></button>
+                            <input type="range" class="video__duration progress" min="0" max="1" step="0.001" value="0">
+                            <button class="video__volume-status button sound"></button>
+                            <input type="range" class="video__volume progresss" min="0" max="1" step="0.01" value="0.5">
                             <button class="video__full-screen button"></button>
                         </div>
                     </div>
@@ -406,5 +405,6 @@
     </div>
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
     <script src="assets/index.js"></script>
+    <script src="assets/video-section.js"></script>
 </body>
 </html>
