@@ -75,3 +75,27 @@ const marker5 = new mapboxgl.Marker({ color: 'gray'})
 .addTo(map);
    
   map.addControl(new mapboxgl.NavigationControl());
+
+
+                                                                                    // TICKETS
+                                                                                    
+
+let radioInputTickets = document.querySelectorAll('.tickets__input');
+radioInputTickets.forEach(x=> x.addEventListener('change',changeTotal));
+
+let numberInputTickets=document.querySelectorAll('.input_text');
+numberInputTickets.forEach(x=> x.addEventListener('change',changeTotal));
+
+let ticketsCounterButtons=document.querySelectorAll('.tickets__group1 button, .tickets__group2 button ');
+ticketsCounterButtons.forEach(x=> x.addEventListener('click',changeTotal));
+
+document.addEventListener("DOMContentLoaded", changeTotal);
+
+function changeTotal(){
+  radioInputTickets=Array.from(radioInputTickets);
+  let baseCost=radioInputTickets.filter(x=>x.checked)[0].value;
+  let costBasicTickets=baseCost*numberInputTickets[0].value;
+  let costSeniorTickets=(baseCost/2).toFixed(1)*numberInputTickets[1].value;
+  document.querySelector('.total').innerHTML= costBasicTickets+costSeniorTickets;
+}
+

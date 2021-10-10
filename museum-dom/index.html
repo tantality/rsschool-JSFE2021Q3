@@ -271,15 +271,15 @@
                         <div class="tickets__col2 display-none">
                             <h4 class="black-title title-indent">Ticket Type</h4>
                             <div class="radiobut">
-                                <input type="radio" id="radiobut1" name="radio" value="per_ex" class="tickets__input" checked>
+                                <input type="radio" id="radiobut1" name="radio" value="20" class="tickets__input" checked>
                                 <label for="radiobut1" class="black-title radiobuts-text">Permanent exhibition</label>
                             </div>
                             <div class="radiobut">
-                                <input type="radio" id="radiobut2" name="radio" value="temp_ex" class="tickets__input">
+                                <input type="radio" id="radiobut2" name="radio" value="25" class="tickets__input">
                                 <label for="radiobut2" class="black-title radiobuts-text">Temporary exhibition</label>
                             </div>
                             <div class="radiobut">
-                                <input type="radio" id="radiobut3" name="radio" value="combined" class="tickets__input">
+                                <input type="radio" id="radiobut3" name="radio" value="40" class="tickets__input">
                                 <label for="radiobut3" class="black-title radiobuts-text">Combined Admission</label>
                             </div>
 
@@ -290,21 +290,21 @@
                                 <div class="tickets__group1 group">
                                      <p class="tickets__text black__text text">Basic 18+</p>
                                         <div class="tickets__counter">
-                                            <button class="tickets__button minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">—</button>
-	                                        <input type="number" min="0" max="20" value="1" readonly class="input_text text">
-	                                        <button class="tickets__button plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
+                                            <button class="tickets__button minus" type="button" onclick="this.nextElementSibling.stepDown(); ">—</button>
+	                                        <input type="number" min="0" max="20" value="1"  class="input_text text">
+	                                        <button class="tickets__button plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>
                                         </div>
                                 </div>
 
                                 <div class="tickets__group2 group">
                                     <p class="tickets__text black__text text">Senior 65+</p>
                                         <div class="tickets__counter">
-                                            <button class="tickets__button minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">—</button>
+                                            <button class="tickets__button minus" type="button" onclick="this.nextElementSibling.stepDown();">—</button>
                                             <input type="number" min="0" max="20" value="1" readonly class="input_text text">
-                                            <button class="tickets__button plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">+</button>
+                                            <button class="tickets__button plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>
                                          </div>
                                 </div>
-                                <p class="tickets__total text">Total €<span class="total">220</span>
+                                <p class="tickets__total text">Total €<span class="total">30</span></p>
                                 <button class="tickets__buy-but but" type="button">Buy Now</button>
                         </div>
                     </div>
