@@ -1,17 +1,5 @@
-const progress = document.querySelector('.progress');
-  
-progress.addEventListener('input', function() {
-  const value = this.value;
-  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`
-})
- 
-const progress2 = document.querySelector('.progresss');
-  
-progress2.addEventListener('input', function() {
-  const value = this.value;
-  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`
-})
 
+                                                                                    // GALLERY
 
 function generateGallery(){
   const pictureInnerContainer = document.querySelector('.art-gallery-inner-container');
@@ -24,11 +12,11 @@ function generateGallery(){
     pictureInnerContainer.append(img);
   });
 }
-
 generateGallery();
 
 
 
+                                                                                    // BURGER-MENU
 const menu = document.querySelector('.nav');
 const burgerIcon = document.querySelector('.burger');
 const welcomeCol=document.querySelector('.welcome__column');
@@ -55,11 +43,35 @@ document.addEventListener('click', function(e) {
 
 
 
-    // mapboxgl.accessToken = 'pk.eyJ1IjoidGFudGFsaXR5IiwiYSI6ImNrdWJ1YTcyaDByemMybm12MXR3ZW55OTMifQ.AClSeJjIqoAnx5Ifygvx4w';
-    // var map = new mapboxgl.Map({
-    // container: 'map',
-    // style: 'mapbox://styles/mapbox/light-v10'
-    // });
 
+                                                                                    // CONTACTS
+  mapboxgl.accessToken = 'pk.eyJ1IjoidGFudGFsaXR5IiwiYSI6ImNrdWJ1YTcyaDByemMybm12MXR3ZW55OTMifQ.AClSeJjIqoAnx5Ifygvx4w';
+  var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/light-v10',
+  center:  [2.3364, 48.86091],
+  zoom: 16
+  });
 
-    console.log('Самооценка:\n1)Вёрстка соответствует макету на экранах 1024px, 768px, 420px. На всех трех разрешениях отсутствует форма покупки билетов +108/120\n2) Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки +6/6\n3)Совмещается адаптивная и респонсивная (резиновая) вёрстка +4/14 При изменении ширины экрана плавно изменяются размеры:\n\tкарты +2\n\tгалереи изображений и изображений в ней +2\n4)На ширине экрана 1024рх и меньше реализовано адаптивное меню +12/12\n\n Отметка: 130/160');
+const marker1 = new mapboxgl.Marker({ color: 'black'})
+.setLngLat([2.3364, 48.86091])
+.addTo(map);
+ 
+const marker2 = new mapboxgl.Marker({ color: 'gray'})
+.setLngLat([2.3333, 48.8602])
+.addTo(map);
+
+const marker3 = new mapboxgl.Marker({ color: 'gray'})
+.setLngLat([2.3397, 48.8607])
+.addTo(map);
+ 
+
+const marker4 = new mapboxgl.Marker({ color: 'gray'})
+.setLngLat([2.3330, 48.8619])
+.addTo(map);
+
+const marker5 = new mapboxgl.Marker({ color: 'gray'})
+.setLngLat([2.3365, 48.8625])
+.addTo(map);
+   
+  map.addControl(new mapboxgl.NavigationControl());
