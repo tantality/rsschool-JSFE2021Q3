@@ -24,6 +24,8 @@ videoVolumeProgress.addEventListener('input',editProgressBar);
 volumeButton.addEventListener('click',toggleMute);
 video.addEventListener('loadedmetadata',function(){
     video.volume=0.5;
+    // videoDurationProgress.value=0;
+    // editProgressBar(videoDurationProgress,0);
 });
 
 function skipFragment(e,value){
@@ -93,7 +95,8 @@ function videoTime(e){
      if(e.type=='input' && video.paused) togglePlay();
     }
     let videoProgress=video.currentTime/ video.duration;
-    editProgressBar(videoDurationProgress,videoProgress);
+    if(!isNaN(videoProgress))editProgressBar(videoDurationProgress,videoProgress);
+    else editProgressBar(videoDurationProgress,0);
     if(video.ended ) {
     playButton.classList.remove('play');
     playButton.classList.add('pause');
@@ -144,3 +147,43 @@ function fillProgressBar(progressBar){
     progressBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
 }
 
+
+
+
+$(document).ready(function(){
+    $('.video__video-slider').slick({
+      arrows:true,
+      slidesToShow:3,
+      slidesToScroll: 1,
+      swipeToSlide:true,
+      dots: true,
+      infinite: true,
+       speed: 500,
+    });
+  });
+
+  
+  $(".video__video-slider").on("init", function(event, slick, currentSlide, nextSlide){
+    changingMainVideo(slick.currentSlide);
+    var CurrentSlideDom=$(slick.$slides.get(currentSlide));
+    var NextSlideDom=$(slick.$slides.get(nextSlide));
+    console.log(CurrentSlideDom);
+    console.log(NextSlideDom);
+  });
+  
+  $(".video__video-slider").on("afterChange", function(event, slick, currentSlide){
+    changingMainVideo(slick.currentSlide);
+  });
+
+
+
+  $('.video__video-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    var CurrentSlideDom=$(slick.$slides.get(currentSlide));
+    var NextSlideDom=$(slick.$slides.get(nextSlide));
+});
+  
+  function changingMainVideo(currentSlide){
+    console.log(currentSlide);
+    video.src=`assets/video/video${currentSlide}.mp4`;
+    video.poster=`assets/video/poster${currentSlide}.jpg`;
+  }

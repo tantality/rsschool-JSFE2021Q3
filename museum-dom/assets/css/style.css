@@ -536,8 +536,9 @@ h3.card__title-underline::after {
 
 .video__video-slider{
     margin: 40px 0;
-    display: flex;
-    column-gap: 42px;
+    /* display: flex; 
+    min-width: 0; 
+    column-gap: 42px; */
 }
 
 .video__video-slider-pagination {
@@ -701,6 +702,84 @@ h3.card__title-underline::after {
     column-gap: 115px;
     align-items: center;
 }
+
+
+
+/* slider */
+
+/* Слайдер */
+.slick-slider{
+    position: relative;
+}
+
+/* Ограничивающая оболочка */
+.slick-list {
+    overflow: hidden;  
+}
+
+/* Лента слайдов */
+.slick-track{
+    display: flex;
+    justify-content: center;
+    column-gap: 42px;
+}
+
+/* Слайд */
+.slick-slide{
+    margin-right: -10px;
+}
+
+
+.video__video-slider .slick-arrow{
+    position: absolute;
+    z-index: 10;
+    font-size: 0;
+    width: 10px;
+    height: 12px;
+}
+
+.video__video-slider .slick-arrow.slick-prev{
+    top:96.5%;
+    left: 43%;
+    background: url("../svg/previous-video.svg") 0 0 no-repeat;
+}
+
+.video__video-slider .slick-arrow.slick-next{
+    top:96.5%;
+    right: 43%;
+    background: url("../svg/next-video.svg") 0 0 no-repeat;
+}
+
+
+
+.video__video-slider .slick-dots{
+    position: relative;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+}
+
+
+.video__video-slider .slick-dots li{
+    list-style: none;
+}
+/* Активная точка */
+.video__video-slider .slick-dots li.slick-active button{
+    background-color: #333333;
+}
+
+/* Элемент точки */
+
+.slick-dots li button{
+    font-size: 0;
+    width: 12px;
+    height: 12px;
+    border-radius:50% ;
+    background-color: #999999;
+}
+
 
 .tickets__row {
     margin-top: 103px;
