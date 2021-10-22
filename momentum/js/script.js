@@ -11,9 +11,14 @@ const weatherError = document.querySelector('.weather-error');
 const wind = document.querySelector('.wind');
 const humidity = document.querySelector('.humidity');
 const city = document.querySelector('.city');
+const changeQuoteBtn = document.querySelector('.change-quote');
+const quote = document.querySelector('.quote');
+const author = document.querySelector('.author');
 
 
 let indexOfBg;
+let indexOfQuote;
+let f=true;
 
 function showTime() {
     const date = new Date();
@@ -38,7 +43,7 @@ function getTimeOfDay(hours){
     if(hours>=6 && hours<12) return 'morning';
     else if(hours>=12 && hours<18)return 'afternoon';
     else if(hours>=18) return 'evening';
-    else if(hours>=0 && hours>6) return 'night';
+    else if(hours>=0 && hours<6) return 'night';
 }
 
 
@@ -50,7 +55,7 @@ function setUserName(){
 
 function setCity(){
     city.value=this.value;
-    if(city.value.charAt(city.value.length - 1)!==' ' && city.value.length!=1)getWeather();
+    if(city.value.charAt(city.value.length - 1)!=='' || city.value.charAt(0)==city.value.charAt(city.value.length - 1) ) getWeather();
 }
 
 
@@ -62,35 +67,43 @@ function setLocalStorage(key,value) {
 function getLocalStorage() {
     if(localStorage.getItem('userName')) userName.value = localStorage.getItem('userName');
     if(localStorage.getItem('city')) city.value = localStorage.getItem('city');
+    else city.value='Minsk';
+    if(localStorage.getItem('indexOfBg')) indexOfBg = localStorage.getItem('indexOfBg');
+    if(localStorage.getItem('indexOfQuote')) indexOfQuote = localStorage.getItem('indexOfQuote');
 }
 
 
 function setBg(bgNum,timeOfDay=getTimeOfDay((new Date).getHours())){
+    indexOfBg=bgNum;
+    setLocalStorage('indexOfBg',bgNum);
+    bgNum=String(bgNum).padStart(2,'0');
     const img = new Image();
     img.src = `https://raw.githubusercontent.com/tantality/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`; 
-    console.log(img.src);
     img.onload = () =>  document.body.style.backgroundImage = `url(${img.src})`;
 }
 
 
-function getRandomNum(min, max) {
+function getRandomNum(min, max,value) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    let randomNum=Math.floor(Math.random() * (max - min + 1)) + min;
-    indexOfBg=randomNum;
-    return String(randomNum).padStart(2,'0');
+    let randomNum;
+    do{
+        randomNum=Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    while(randomNum==value);
+    return randomNum;
 }
 
 
 function getSlideNext(){
     indexOfBg==20?indexOfBg=1:++indexOfBg;
-    setBg(String(indexOfBg).padStart(2,'0'));
+    setBg(indexOfBg);
 }
 
 
 function getSlidePrev(){
     indexOfBg==1?indexOfBg=20:--indexOfBg;
-    setBg(String(indexOfBg).padStart(2,'0'));
+    setBg(indexOfBg);
 }
 
 
@@ -113,7 +126,6 @@ function  hideContent() {
 }
 
 async function getWeather(c) {  
-    if(c=='load') getLocalStorage(c);
     let data;
     try{
         if(isEmpty(city.value)){
@@ -122,28 +134,53 @@ async function getWeather(c) {
         }   
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=08f2a575dda978b9c539199e54df03b0&units=metric`;
         const res = await fetch(url);
-        if(res.status=='404') throw new Error(`Error! city not found for '${city.value}.`);
+        if(res.status=='404' && !isEmpty(city.value)) throw new Error(`Error! city not found for '${city.value}'.`);
+        else f=true;
         data = await res.json(); 
     }
     catch(err){
         hideContent();
         weatherError.textContent=err.message; 
+        f=false;
     }
-    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-    weatherError.textContent='';
-    temperature.textContent = `${Math.floor(data.main.temp)}°C`;
-    weatherDescription.textContent = data.weather[0].description;
-    wind.textContent = `Wind speed: ${Math.floor(data.wind.speed)} m/s`;
-    humidity.textContent = `Humidity: ${Math.floor(data.main.humidity)}%`;
-    setLocalStorage('city',trimStr(city.value));
-    setTimeout(getWeather,60000);
+    if(f!=false){
+        weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+        weatherError.textContent='';
+        temperature.textContent = `${Math.floor(data.main.temp)}°C`;
+        weatherDescription.textContent = data.weather[0].description;
+        wind.textContent = `Wind speed: ${Math.floor(data.wind.speed)} m/s`;
+        humidity.textContent = `Humidity: ${Math.floor(data.main.humidity)}%`;
+        setLocalStorage('city',trimStr(city.value));
+        setTimeout(getWeather,60000);
+    }; 
   }
 
-  getWeather('load');
+  async function getQuotes() {  
+    const quotes =  "./js/quotes.json";
+    const res = await fetch(quotes);
+    const data = await res.json(); 
+    return Promise.resolve(data.quotes);
+  }
+
+ function setAuthorAndQuotes() {
+    let randomNum=getRandomNum(0, 100,indexOfQuote);
+    indexOfQuote=randomNum;
+    setLocalStorage('indexOfQuote',indexOfQuote);
+    getQuotes().then(val=>{
+        quote.textContent=`"${val[randomNum].quote}"`;
+        author.textContent=val[randomNum].author;
+    });
+  }
+
+  getQuotes();
   showTime();
+  setAuthorAndQuotes();
   slidePrevBtn.addEventListener('click',getSlidePrev);
   slideNextBtn.addEventListener('click',getSlideNext);
+  changeQuoteBtn.addEventListener('click',setAuthorAndQuotes);
   userName.addEventListener('input',setUserName);
   city.addEventListener('input',setCity);
+  getLocalStorage();
+  getWeather();
   
-  setBg(getRandomNum(1,20));
+  setBg(getRandomNum(1,20,indexOfBg));
