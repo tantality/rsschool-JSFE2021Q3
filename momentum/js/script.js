@@ -7,7 +7,6 @@ const slideNextBtn = document.querySelector('.slide-next');
 
 let indexOfBg;
 
-
 function showTime() {
     const date = new Date();
     const currentTime = date.toLocaleTimeString();
@@ -26,11 +25,10 @@ function showDate() {
 }
 
 function getTimeOfDay(hours){
-    let timeOfDay=['morning','day', 'evening', 'night'];
-    if(hours>=6 && hours<12) return timeOfDay[0];
-    else if(hours>=12 && hours<18)return timeOfDay[1];
-    else if(hours>=18) return timeOfDay[2];
-    else if(hours>=0 && hours>6) return timeOfDay[3];
+    if(hours>=6 && hours<12) return 'morning';
+    else if(hours>=12 && hours<18)return 'afternoon';
+    else if(hours>=18) return 'evening';
+    else if(hours>=0 && hours>6) return 'night';
 }
 
 function setUserName(){
@@ -39,22 +37,20 @@ function setUserName(){
 }
 
 function setLocalStorage(key,value) {
-    localStorage.setItem('name', userName.value);
+    localStorage.setItem(key, value);
 }
 
 function getLocalStorage() {
-    if(localStorage.getItem('name')) userName.value = localStorage.getItem('name');
+    if(localStorage.getItem('userName')) userName.value = localStorage.getItem('userName');
 }
 
 function setBg(bgNum,timeOfDay=getTimeOfDay((new Date).getHours())){
-
     const img = new Image();
     img.src = `https://raw.githubusercontent.com/tantality/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`; 
     console.log(img.src);
     img.onload = () => {      
     document.body.style.backgroundImage = `url(${img.src})`;
   }; 
-    // document.body.style.backgroundImage = `url(https://raw.githubusercontent.com/tantality/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg)`;
 }
 
 function getRandomNum(min, max) {
