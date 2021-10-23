@@ -1,3 +1,5 @@
+import playList from './playList.js';
+
 const time = document.querySelector('.time');
 const date = document.querySelector('.date');
 const greeting = document.querySelector('.greeting');
@@ -14,11 +16,21 @@ const city = document.querySelector('.city');
 const changeQuoteBtn = document.querySelector('.change-quote');
 const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');
+const playListContainer = document.querySelector('.play-list');
+// let playListAudios;
+const playBtn = document.querySelector('.play');
+const playPrevBtn = document.querySelector('.play-prev');
+const playNextBtn = document.querySelector('.play-next');
+const audio=new Audio();
 
 
 let indexOfBg;
 let indexOfQuote;
 let f=true;
+let numOfCurrentAudio=0;
+let numOfPrevAudio=0;
+let currentAudioTime=0;
+let isPlay=false;
 
 function showTime() {
     const date = new Date();
@@ -125,6 +137,7 @@ function  hideContent() {
     weatherDescription.textContent=''; 
 }
 
+
 async function getWeather(c) {  
     let data;
     try{
@@ -155,12 +168,14 @@ async function getWeather(c) {
     }; 
   }
 
+
   async function getQuotes() {  
     const quotes =  "./js/quotes.json";
     const res = await fetch(quotes);
     const data = await res.json(); 
     return Promise.resolve(data.quotes);
   }
+
 
  function setAuthorAndQuotes() {
     let randomNum=getRandomNum(0, 100,indexOfQuote);
@@ -172,11 +187,76 @@ async function getWeather(c) {
     });
   }
 
+
+  function generatePlaylist(params) {
+    playList.forEach(sound=>{
+        const li=document.createElement('li');
+        li.classList.add('play-item');
+        li.textContent=sound.title;
+        playListContainer.append(li);
+    });
+  }
+
+  
+  function togglePlayPrev(){
+      numOfPrevAudio=numOfCurrentAudio;
+      if(numOfCurrentAudio==0) numOfCurrentAudio= playList.length-1;
+      else --numOfCurrentAudio;
+      togglePlay();
+  }
+
+
+  function togglePlayNext(){
+    numOfPrevAudio=numOfCurrentAudio;
+    if(numOfCurrentAudio==playList.length-1) numOfCurrentAudio=0;
+    else ++numOfCurrentAudio;
+    togglePlay();
+}
+
+
+  function togglePlay(e){
+     setCurrentAudio(); 
+      if(e!==undefined){
+        if(!isPlay){
+            isPlay=true;
+            audio.play();       
+        }     
+          else{
+              isPlay=false;
+              audio.currentTime=audio.currentTime;
+              audio.pause();
+        }
+        playBtn.classList.toggle('pause');
+        numOfPrevAudio=numOfCurrentAudio;
+        audio.currentTime=currentAudioTime;
+      }
+      else if(isPlay) audio.play();
+  }
+
+
+  function setCurrentAudio(){
+    playListContainer.children[numOfPrevAudio].classList.remove('item-active');
+    playListContainer.children[numOfCurrentAudio].classList.add('item-active');
+    audio.src=playList[numOfCurrentAudio].src;
+  }
+
+
+  function audioTime(e){
+    currentAudioTime=audio.currentTime;
+    if(audio.ended) togglePlayNext();
+}
+
+
+  generatePlaylist();
+  setCurrentAudio();
   getQuotes();
   showTime();
   setAuthorAndQuotes();
   slidePrevBtn.addEventListener('click',getSlidePrev);
   slideNextBtn.addEventListener('click',getSlideNext);
+  playBtn.addEventListener('click',togglePlay);
+  playPrevBtn.addEventListener('click',togglePlayPrev);
+  playNextBtn.addEventListener('click',togglePlayNext);
   changeQuoteBtn.addEventListener('click',setAuthorAndQuotes);
   userName.addEventListener('input',setUserName);
   city.addEventListener('input',setCity);
@@ -184,3 +264,8 @@ async function getWeather(c) {
   getWeather();
   
   setBg(getRandomNum(1,20,indexOfBg));
+  audio.addEventListener('timeupdate',audioTime);
+  audio.addEventListener('loadedmetadata', function() {
+    audio.volume=0.3;
+});
+	
