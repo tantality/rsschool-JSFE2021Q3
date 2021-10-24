@@ -17,10 +17,16 @@ const changeQuoteBtn = document.querySelector('.change-quote');
 const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');
 const playListContainer = document.querySelector('.play-list');
-// let playListAudios;
 const playBtn = document.querySelector('.play');
 const playPrevBtn = document.querySelector('.play-prev');
 const playNextBtn = document.querySelector('.play-next');
+const volumeBtn = document.querySelector('.volume');
+let songTitle= document.querySelector('.player-song-title');
+let durationInfo = document.querySelector('.time__duration');
+let audioCurrentTime = document.querySelector('.time__current-time');
+let audioDurationProgress=document.querySelector('.controls__duration');
+let audioVolumeProgress=document.querySelector('.controls__volume');
+
 const audio=new Audio();
 
 
@@ -31,6 +37,8 @@ let numOfCurrentAudio=0;
 let numOfPrevAudio=0;
 let currentAudioTime=0;
 let isPlay=false;
+let volumeValue=0.3;
+// let volumeValue=audio.value;
 
 function showTime() {
     const date = new Date();
@@ -202,7 +210,10 @@ async function getWeather(c) {
       numOfPrevAudio=numOfCurrentAudio;
       if(numOfCurrentAudio==0) numOfCurrentAudio= playList.length-1;
       else --numOfCurrentAudio;
-      togglePlay();
+      editProgressBar(audioDurationProgress,0);
+      editProgressBar(audioVolumeProgress,audio.volume);
+      volumeValue=audio.volume;
+      togglePlay();      
   }
 
 
@@ -210,6 +221,9 @@ async function getWeather(c) {
     numOfPrevAudio=numOfCurrentAudio;
     if(numOfCurrentAudio==playList.length-1) numOfCurrentAudio=0;
     else ++numOfCurrentAudio;
+    editProgressBar(audioDurationProgress,0);
+    editProgressBar(audioVolumeProgress,audio.volume);
+    volumeValue=audio.volume;
     togglePlay();
 }
 
@@ -227,8 +241,8 @@ async function getWeather(c) {
               audio.pause();
         }
         playBtn.classList.toggle('pause');
+        if(numOfPrevAudio==numOfCurrentAudio)  audio.currentTime=currentAudioTime;
         numOfPrevAudio=numOfCurrentAudio;
-        audio.currentTime=currentAudioTime;
       }
       else if(isPlay) audio.play();
   }
@@ -238,12 +252,70 @@ async function getWeather(c) {
     playListContainer.children[numOfPrevAudio].classList.remove('item-active');
     playListContainer.children[numOfCurrentAudio].classList.add('item-active');
     audio.src=playList[numOfCurrentAudio].src;
+    audio.volume=volumeValue;
+    songTitle.innerHTML=playList[numOfCurrentAudio].title;
+    durationInfo.textContent=playList[numOfCurrentAudio].duration;
   }
 
 
   function audioTime(e){
+    if(e!==undefined && e.currentTarget.tagName!=='AUDIO'){
+     let value=e.currentTarget.value;
+     if(value!=null && !isNaN(value))  audio.currentTime=parseFloat(value*audio.duration);
+    }
+    audioCurrentTime.innerHTML=setTime(audio.currentTime);
+    let audioProgress=audio.currentTime/ audio.duration;
+    if(!isNaN(audioProgress))editProgressBar(audioDurationProgress,audioProgress);
     currentAudioTime=audio.currentTime;
     if(audio.ended) togglePlayNext();
+}
+
+function setTime(time){
+    let mins=Math.floor(time/60);
+    let secs=Math.floor(time-mins*60);
+    if(secs<10)secs='0'+secs;
+    return mins+':'+secs;
+}
+
+
+function editProgressBar(progressBar,value){
+    progressBar.value=value;
+    if(progressBar.target) {
+        volumeValue=audio.volume;
+        audio.volume=progressBar.currentTarget.value;
+        editVolumeProgressBar();
+    }
+    fillProgressBar(progressBar);
+}
+
+
+
+function toggleVolume(){
+    volumeBtn.classList.toggle('volume-mute');
+    volumeBtn.classList.toggle('volume');
+    if(volumeBtn.classList.contains('volume-mute')){
+        volumeValue=audio.volume;
+        audio.volume=0;
+    }
+    else audio.volume=volumeValue;
+    editProgressBar(audioVolumeProgress,audio.volume);
+}
+
+function editVolumeProgressBar(){
+    if(audio.volume==0) {
+        volumeBtn.classList.remove('volume')
+        volumeBtn.classList.add('volume-mute');
+    }
+    else {
+        volumeBtn.classList.remove('volume-mute')
+        volumeBtn.classList.add('volume');
+    }
+}
+
+function fillProgressBar(progressBar){
+    if(progressBar.type=='input') progressBar=progressBar.currentTarget;
+    const value= progressBar.value*100;
+    progressBar.style.background = `linear-gradient(to right, rgba(197,179,88,.8) 0%, rgba(197,179,88,.8) ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
 }
 
 
@@ -265,7 +337,10 @@ async function getWeather(c) {
   
   setBg(getRandomNum(1,20,indexOfBg));
   audio.addEventListener('timeupdate',audioTime);
+  audioDurationProgress.addEventListener('input', audioTime);
+  audioVolumeProgress.addEventListener('input',editProgressBar);
+  volumeBtn.addEventListener('click', toggleVolume);
   audio.addEventListener('loadedmetadata', function() {
-    audio.volume=0.3;
+    editProgressBar(audioVolumeProgress,audio.volume);
 });
 	
