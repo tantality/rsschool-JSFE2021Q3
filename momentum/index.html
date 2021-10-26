@@ -48,14 +48,26 @@
     <date class="date"></date>
     <div class="greeting-container">
       <span class="greeting"></span>
-      <input type="text" class="name" placeholder="[Enter name]" />
+      <input type="text" class="name" />
     </div>
   </main>
   <footer class="footer">
     <button class="change-quote"></button>
-    <div>
-      <div class="quote"></div>
-      <div class="author"></div>
+    <div class="row"> 
+      <div class="group">
+        <span class="en">En</span>
+        <label class="switch" for="checkbox1">
+          <input type="checkbox" id="checkbox1">
+          <span class="slider round"></span>
+        </label>
+        <span class="ru">Ru</span>
+      </div>
+      
+      <div class="column">
+        <div class="quote"></div>
+        <div class="author"></div>
+      </div>
+      
     </div>
   </footer>
   <script type="module" src="js/script.js"></script>

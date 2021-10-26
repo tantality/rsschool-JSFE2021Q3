@@ -21,6 +21,7 @@ const playBtn = document.querySelector('.play');
 const playPrevBtn = document.querySelector('.play-prev');
 const playNextBtn = document.querySelector('.play-next');
 const volumeBtn = document.querySelector('.volume');
+const switcher=document.querySelector('.switch #checkbox1');
 let songTitle= document.querySelector('.player-song-title');
 let durationInfo = document.querySelector('.time__duration');
 let audioCurrentTime = document.querySelector('.time__current-time');
@@ -38,14 +39,34 @@ let numOfPrevAudio=0;
 let currentAudioTime=0;
 let isPlay=false;
 let volumeValue=0.3;
-// let volumeValue=audio.value;
+let lang='';
+let index=0;
+let randomNum=0;
+let en={
+    greeting: ['Good morning','Good afternoon', 'Good evening', 'Good night'],
+    placeholder: '[Enter name]',
+    windSpeed: ['Wind speed:','m/s'],
+    humidity: 'Humidity:'
+};
+
+let ru={
+    greeting: ['Доброе утро','Добрый день', 'Добрый вечер', 'Спокойной ночи'],
+    placeholder: '[Введите имя]',
+    windSpeed: ['Скорость ветра:','м/с'],
+    humidity: 'Влажность:'
+};
+
+let obj;
+
 
 function showTime() {
+
     const date = new Date();
     const currentTime = date.toLocaleTimeString();
     time.textContent = currentTime;
     showDate();
-    const timeOfDay=`Good ${getTimeOfDay(date.getHours())},`;
+    getTimeOfDay(date.getHours());
+    const timeOfDay=`${obj.greeting[index]},`;
     greeting.textContent=timeOfDay;
     setTimeout(showTime, 1000);
 }
@@ -54,16 +75,29 @@ function showTime() {
 function showDate() {
     const objDate = new Date();
     const options = {weekday:'long',month: 'long', day: 'numeric'};
-    const currentDate = objDate.toLocaleDateString('en-US', options);
-    date.textContent = currentDate;
+    let locale=lang=='en'?'en-US':'ru';
+    const currentDate = objDate.toLocaleDateString(locale, options);
+    date.textContent = currentDate[0].toUpperCase()+currentDate.slice(1);
 }
 
 
 function getTimeOfDay(hours){
-    if(hours>=6 && hours<12) return 'morning';
-    else if(hours>=12 && hours<18)return 'afternoon';
-    else if(hours>=18) return 'evening';
-    else if(hours>=0 && hours<6) return 'night';
+    if(hours>=6 && hours<12){
+        index=0;
+        return 'morning';
+    } 
+    else if(hours>=12 && hours<18){
+        index=1;
+        return 'afternoon';
+    }
+    else if(hours>=18){
+        index=2;
+        return 'evening';
+    } 
+    else if(hours>=0 && hours<6){
+        index=3;
+        return 'night';
+    } 
 }
 
 
@@ -88,8 +122,12 @@ function getLocalStorage() {
     if(localStorage.getItem('userName')) userName.value = localStorage.getItem('userName');
     if(localStorage.getItem('city')) city.value = localStorage.getItem('city');
     else city.value='Minsk';
+    if(localStorage.getItem('lang')) lang = localStorage.getItem('lang');
+    else lang='en';
     if(localStorage.getItem('indexOfBg')) indexOfBg = localStorage.getItem('indexOfBg');
     if(localStorage.getItem('indexOfQuote')) indexOfQuote = localStorage.getItem('indexOfQuote');
+    if(lang=='en')obj=en;
+    else obj=ru;
 }
 
 
@@ -153,7 +191,7 @@ async function getWeather(c) {
             setLocalStorage('city','Minsk');
             throw new Error('Error! Nothing to geocode.');
         }   
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=08f2a575dda978b9c539199e54df03b0&units=metric`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${lang}&appid=08f2a575dda978b9c539199e54df03b0&units=metric`;
         const res = await fetch(url);
         if(res.status=='404' && !isEmpty(city.value)) throw new Error(`Error! city not found for '${city.value}'.`);
         else f=true;
@@ -169,8 +207,8 @@ async function getWeather(c) {
         weatherError.textContent='';
         temperature.textContent = `${Math.floor(data.main.temp)}°C`;
         weatherDescription.textContent = data.weather[0].description;
-        wind.textContent = `Wind speed: ${Math.floor(data.wind.speed)} m/s`;
-        humidity.textContent = `Humidity: ${Math.floor(data.main.humidity)}%`;
+        wind.textContent = `${obj.windSpeed[0]} ${Math.floor(data.wind.speed)}${obj.windSpeed[1]}`;
+        humidity.textContent = `${obj.humidity} ${Math.floor(data.main.humidity)}%`;
         setLocalStorage('city',trimStr(city.value));
         setTimeout(getWeather,60000);
     }; 
@@ -178,17 +216,20 @@ async function getWeather(c) {
 
 
   async function getQuotes() {  
-    const quotes =  "./js/quotes.json";
+    const quotes =lang=='en'? "./js/quotes.json": "./js/quotes_ru.json";
     const res = await fetch(quotes);
     const data = await res.json(); 
     return Promise.resolve(data.quotes);
   }
 
+  
 
- function setAuthorAndQuotes() {
-    let randomNum=getRandomNum(0, 100,indexOfQuote);
-    indexOfQuote=randomNum;
-    setLocalStorage('indexOfQuote',indexOfQuote);
+ function setAuthorAndQuotes(e=0) {
+     if(Number.isInteger(e) || e.type=='click'){
+        randomNum=getRandomNum(0, 19,indexOfQuote);
+        indexOfQuote=randomNum;
+        setLocalStorage('indexOfQuote',indexOfQuote);
+     }
     getQuotes().then(val=>{
         quote.textContent=`"${val[randomNum].quote}"`;
         author.textContent=val[randomNum].author;
@@ -319,10 +360,32 @@ function fillProgressBar(progressBar){
 }
 
 
+function setLanguage(e) {
+    if(e!==undefined){
+        if(switcher.checked==false) lang='en';
+        else lang='ru';
+    }
+    switcher.checked= lang=='en'?false:true;
+    obj=lang=='en'?en:ru;
+    setLocalStorage('lang',lang);
+    setLocalStorage('switcher',switcher.checked);
+    getWeather();
+    setAuthorAndQuotes(e);
+    setPlaceholder();
+    showTime();
+}
+
+function setPlaceholder() {
+    userName.placeholder=obj.placeholder;
+}
+
+  getLocalStorage();
+  showTime();
+  getWeather();
   generatePlaylist();
   setCurrentAudio();
   getQuotes();
-  showTime();
+ 
   setAuthorAndQuotes();
   slidePrevBtn.addEventListener('click',getSlidePrev);
   slideNextBtn.addEventListener('click',getSlideNext);
@@ -332,17 +395,18 @@ function fillProgressBar(progressBar){
   changeQuoteBtn.addEventListener('click',setAuthorAndQuotes);
   userName.addEventListener('input',setUserName);
   city.addEventListener('input',setCity);
-  getLocalStorage();
-  getWeather();
+  
   
   setBg(getRandomNum(1,20,indexOfBg));
   audio.addEventListener('timeupdate',audioTime);
   audioDurationProgress.addEventListener('input', audioTime);
   audioVolumeProgress.addEventListener('input',editProgressBar);
+  switcher.addEventListener('input', setLanguage);
   volumeBtn.addEventListener('click', toggleVolume);
   audio.addEventListener('loadedmetadata', function() {
+      setLanguage();
     editProgressBar(audioVolumeProgress,audio.volume);
 });
 	
 
-console.log(`Самооценка:\n1) Часы и календарь +15\n2)Приветствие +10\n3)Смена фонового изображения +20\n4)Виджет погоды +15\n5)Виджет цитата дня +10\n6)Аудиоплеер +15\n7)Продвинутый аудиоплеер (реализуется без использования библиотек) +20\n\n Итого: 105/150`);
+console.log(`Самооценка:\n1) Часы и календарь +15\n2)Приветствие +10\n3)Смена фонового изображения +20\n4)Виджет погоды +15\n5)Виджет цитата дня +10\n6)Аудиоплеер +15\n7)Продвинутый аудиоплеер (реализуется без использования библиотек) +20\n8)Перевод приложения на два языка (en/ru) +12/15\n\n Итого: 117/150`);

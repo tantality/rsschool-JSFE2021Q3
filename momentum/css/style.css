@@ -280,6 +280,7 @@ body {
   min-height: 48px;
   width: 100vw;
   font-size: 40px;
+  padding: 0 32px;
 }
 
 .greeting {
@@ -327,6 +328,98 @@ body {
 
 .author {
   min-height: 20px;
+}
+
+.row{
+  display:flex;
+  width: 100%;
+  align-items: center;
+
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-left: -6%;
+  /* margin-left: -2%; */
+  /* padding: 0 5%; */
+
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  background-color: #C4C4C4;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 25px;
+  width: 26px;
+  left: 0px;
+  bottom: -3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #C5B358;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #C5B358;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(25px);
+  -ms-transform: translateX(25px);
+  transform: translateX(25px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.en,.ru{
+  font-size:18px ;
+}
+
+.group{
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+}
+
+.en{
+  margin-right: 20px;
+}
+
+.ru{
+  margin-left: 20px;
 }
 
 @media (max-width: 768px) {
