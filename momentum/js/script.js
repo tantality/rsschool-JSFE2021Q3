@@ -62,7 +62,8 @@ let obj;
 function showTime() {
 
     const date = new Date();
-    const currentTime = date.toLocaleTimeString();
+    const currentTime = date.toLocaleTimeString('en-GB');
+    console.log(currentTime.hour12)
     time.textContent = currentTime;
     showDate();
     getTimeOfDay(date.getHours());
