@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin=require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin=require('mini-css-extract-plugin');
+const CopyWebpackPlugin=require('copy-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -24,6 +25,10 @@ module.exports = {
             type: 'asset/resource',
         },
         {
+          test: /\.(woff(2)?|eot|ttf|otf)$/i,
+          type: 'asset/resource',
+        },
+        {
             test: /\.css$/i,
             use: [MiniCssExtractPlugin.loader,'css-loader'],
         },
@@ -40,13 +45,20 @@ module.exports = {
   plugins:[
     new HtmlWebpackPlugin({
         template:'./src/index.html',
-        filename:'[name].[contenthash].html',
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({  
       filename:'[name].[contenthash].css',
     }
-    )
+    ),
+    new CopyWebpackPlugin({ 
+      patterns: [
+          {
+              from: path.join(__dirname,'./src/assets/sounds'),
+              to:path.join(__dirname, './dist/assets')
+          }
+      ]
+  })
 
   ]
   ,
