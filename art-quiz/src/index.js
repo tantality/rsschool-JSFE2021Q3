@@ -12,8 +12,8 @@ const volumeProgress=document.querySelector('.volume');
 const numOfSecondsText=document.querySelector('.num-of-seconds');
 const onOffText=document.querySelector('.on-off-text');
 
-const victoryAudio=new Audio('/assets/victory.mp3');
-const failureAudio=new Audio('/assets/failure.mp3');
+const victoryAudio=new Audio('assets/victory.mp3');
+const failureAudio=new Audio('assets/failure.mp3');
 
 const defaultSettings={
     volume:0.5,

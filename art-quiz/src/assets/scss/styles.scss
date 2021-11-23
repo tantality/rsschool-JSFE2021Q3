@@ -9,6 +9,17 @@ $black:black;
 body{
     font-family: "Gilroy";
     color: white;
+    background-image:url(../img/full/main.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:  center 25%;
+}
+
+h2{
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 28px;
+    letter-spacing: -0.5px;
 }
 
 @mixin btn-without-fill($col1,$hover-bg,$hover-col1) {
@@ -41,6 +52,23 @@ body{
     @include btn-states(white, black);
 }
 
+.progress {
+    height: 4px;
+    width: 100%;
+    outline: none;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+    border-radius: 4.5px;
+    &::-webkit-slider-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        -webkit-appearance: none;
+        cursor: ew-resize;
+        background: #fff;
+        transition: 2s;
+    }
+}
 
 %big-btn-text{
     font-weight: 500;
@@ -78,25 +106,48 @@ button {
     display: flex;
     flex-direction: column;
 }
+
 main{
+    margin-top: 150px;
     flex: 1 1 auto;
+    .main-menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        .logo{
+            margin-bottom: 140px;
+            background-position-x:77px;
+        }
+
+        .artist-quiz-btn{
+            margin-right: 40px;
+        }
+    }
+    .main__buttons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .artist-quiz-btn,.pictures-quiz-btn{
+            width:287px;
+            height:62px;
+        }
+    }
+
 }
 
- body{
-    background-image:url(../img/full/main.jpg);
+
+.logo{
+    background-image: url(../svg/logo_circles.svg);
     background-repeat: no-repeat;
- }
+    height:164px;
+    background-size: 246px 164px;
+}
 
  .hide{
      display: none;
-     transition: 1s ease-out;
  }
 
- .logo{
-    background-image: url(../svg/logo_circles.svg);
-    background-repeat: no-repeat;
-
-}
 
 .change-color{
     color: $pink;
@@ -124,37 +175,34 @@ main{
     @include btn-without-fill(white,white,black);
 }
 
-.main-menu{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-}
 
 h1,.logo p{
     text-align: center;
-    margin-left:13px;
     font-weight: bold;
-    font-size: 42px;
-    color: white;
-    line-height: 60px;
-    letter-spacing: -0.9px;
+    font-size: 111px;
+    line-height: 159px;
+    letter-spacing: -2.4px;
 }
 
 .rsschool-logo{
+    width: 100px;
+    height: 40px;
     background-image: url(../svg/rs_school.svg);
     filter: invert(1);
     background-repeat: no-repeat;
+    a{
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .p,p{
-    text-align: center;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 21px;
     line-height: 20px;
     letter-spacing: -0.6px;
     color: white;
-
     a:hover &,a:active &{
         color: #FFF1DD;
     }
@@ -175,15 +223,81 @@ h1,.logo p{
     &.open{
         left: 0;
     }
-    .settings-title{
-        font-weight: bold;
-        font-size: 28px;
-        line-height: 28px;
-        letter-spacing: -0.9px;
+    
+    .settings-page__panel{
+        position: relative;
+        height: auto;
+        display: flex;
+        justify-content: flex-start;
+        padding: 60px 0;
+        .close-btn{
+            position: absolute;
+            background-image: url('../svg/close-icon3.svg');
+            width: 36px;
+            height: 36px;
+            right:-22px;
+            top: 60px;
+        }
     }
 
+    .settings-title{
+        font-weight: bold;
+        font-size: 34px;
+        line-height: 28px;
+        letter-spacing: -0.9px;
+        margin-bottom: 40px;
+    }
+
+    .settings-page__settings{
+        max-width: 500px;
+        margin-top: 30px;
+        margin-bottom: 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        .settings-page__icons{
+            margin-top: 10px;
+                display: flex;
+                justify-content: space-between;
+                div{
+                    width: 36px;
+                    height: 36px;
+                    background-repeat: no-repeat;
+                }
+                .mute,.sound{
+                    background-size: 30px 20px;
+                }
+        }  
+        .settings__playing-for-time{
+            margin: 80px 0;
+        } 
+
+        .switch-block{
+            column-gap: 16px;
+        }
+
+        .setting-time__content{
+            justify-content: flex-start;
+            align-items: center;
+            column-gap: 24px;
+            
+            button{
+                display: block;
+                background-size: 36px 36px;
+                width:36px;
+                 height: 36px;
+            }   
+        }
+
+    }
     .settings-page__buttons{
         display: flex;
+        justify-content: flex-end;
+        column-gap: 10px;
+        .default-btn,.save-btn{
+            width:287px;
+            height: 62px;
+        }
     }
 
     .switch-block{
@@ -197,6 +311,7 @@ h1,.logo p{
     .save-btn{
         @extend %big-btn-text;
     }
+   
 }
 
 
@@ -211,10 +326,13 @@ h1,.logo p{
 }
 
 footer{
+    padding:18px 0;
     z-index: 1;
+    height: auto;
     .container{
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 }
 
@@ -273,19 +391,183 @@ footer{
       }
   }
 
-  
+  .container{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+
+   header{
+    max-width: 1600px;
+    padding: 60px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: content-box;
+    height: auto;
+    .settings-btn{
+        margin-left: auto;
+        background-size: 34px 34px;
+        width: 34px;
+        height: 34px;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+
+    body{
+        background-position: center center;
+       }
+
+    h2{
+        font-size: 24px;
+    }
+
+    .container{
+        max-width: 708px;
+        margin: 0 auto;
+        padding: 0 30px;
+    }
+
+    header{
+        padding: 30px;
+        .settings-btn{
+            background-size: 34px 34px;
+            width: 34px;
+            height: 34px;
+        }
+    }
+
+    main{
+        margin-top: 200px;
+        align-self: center;
+        .main-menu{
+            .logo{
+                margin-bottom: 120px;
+                background-position-x:0 ;
+            }
+    
+            .artist-quiz-btn{
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+
+        .main__buttons{
+            flex-direction: column;
+            .artist-quiz-btn,.pictures-quiz-btn{
+                width:268px;
+                height:56px;
+            }
+        }
+    }
+
+    .logo{
+        height:120px;
+        background-size: 180px 120px;
+    }
+
+    h1,.logo p{
+        
+        margin-left:30px;
+        font-size: 81px;
+        line-height: 116px;
+        letter-spacing: -1.76px;
+    }
+
+
+    
+
+    footer{
+        padding: 27px 0;
+        .rsschool-logo{
+            width: 85px;
+            height: 30px;
+        }
+    }
+
+    .p,p{
+        text-align: start;
+        font-size: 18px;
+    }
+
+    .settings-page{
+        
+        .container{
+            padding: 0 50px;
+        }
+        
+        .settings-page__panel{
+            justify-content: flex-start;
+            padding: 45px 0;
+            .close-btn{
+                width: 34px;
+                height: 34px;
+                right: -35px;
+                top: 35px;
+            }
+        }
+       
+        .settings-page__settings{
+        
+            margin-top: 60px;
+            margin-bottom: 130px;
+            .settings-page__icons{
+                margin-top: 4px;
+                div{
+                    width: 36px;
+                    height: 36px;
+                }
+                .mute,.sound{
+                    background-size: 30px 20px;
+                }
+            }
+
+            .settings__playing-for-time{
+                margin: 80px 0;
+            }
+
+            .switch-block{
+                margin-top: 20px;
+                column-gap: 16px;
+                height: 28px;
+            }
+            
+        }
+    
+        .settings-page__buttons{
+            justify-content: flex-start;
+            column-gap: 30px;
+            .default-btn,.save-btn{
+                width:293px;
+                height: 56px;
+             }
+        }
+
+        
+    }
+
+    .progress {
+        height: 4px;
+        border-radius: 4.5px;
+        &::-webkit-slider-thumb {
+            width: 16px;
+            height: 16px;
+        }
+    }
+    
+    
+}
 
 @media (max-width: 520px){
-   body{
-    background-size: cover;
-    background-position: center center;
-   }
 
-   h2{
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 28px;
-        letter-spacing: -0.5px;
+    h1,.logo p{
+        margin-left:13px;
+        font-size: 42px;
+        line-height: 60px;
+        letter-spacing: -0.9px;
     }
 
     .container{
@@ -295,40 +577,29 @@ footer{
     }
 
     header{
-        display: flex;
-        justify-content: space-between;
-        box-sizing: content-box;
         padding: 22px 16px;
-        height: auto;
         .settings-btn{
-            justify-self: flex-end;
             background-size: 32px 32px;
             width: 32px;
             height: 32px;
-            margin-left: auto;
         }
     }
 
     main{
         margin-top: 256px;
         align-self: center;
+        .main-menu{
+            .logo{
+                background-position-x: 52px;
+                margin-bottom: 32px;
+            }
+    
+            .artist-quiz-btn{
+                margin-bottom: 20px;
+            }
+        }
     }
    
-    .main-menu{
-        .logo{
-            background-position-x: 50px;
-            margin-bottom: 32px;
-        }
-
-        .artist-quiz-btn{
-            margin-bottom: 20px;
-        }
-    }
-
-    .artist-quiz-btn,.pictures-quiz-btn{
-        width:268px;
-        height:56px;
-    }
 
     .logo{
         height:62px;
@@ -336,110 +607,96 @@ footer{
     }
 
     footer{
-        height: auto;
         padding: 10px 0;
     }
 
     .rsschool-logo{
         width: 63px;
         height: 23px;
-        a{
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
     }
 
-    .settings-page__panel{
-        position: relative;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        padding: 20px 0;
-        margin: 0 -9px;
-        .close-btn{
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            background-image: url('../svg/close-icon3.svg');
-            right: 0;
-            top: 21px;
+    .settings-page{
+        .container{
+            padding: 0 16px;
         }
-        h2{
-            margin-top: 10px;
-        }
-    }
 
-    .settings-page__settings{
-        margin:30px 14px 50px 14px;
-        .settings-title{
-           margin-bottom: 20px;
-        }
-    
-        .settings-page__icons{
-            margin-top: 8px;
+        .settings-page__panel{
+            position: relative;
+            height: auto;
             display: flex;
-            justify-content: space-between;
-            div{
-                width: 28px;
-                height: 28px;
-                background-repeat: no-repeat;
+            justify-content: center;
+            padding: 20px 0;
+            margin: 0 -9px;
+            .close-btn{
+                position: absolute;
+                width: 32px;
+                height: 32px;
+                background-image: url('../svg/close-icon3.svg');
+                right: 0;
+                top: 21px;
+            }
+            h2{
+                text-align: center;
+                margin-top: 10px;
             }
         }
-
-        .settings__playing-for-time{
-            margin: 45px 0;
-        }
-
-        .setting-time__content{
-           justify-content: center;
-           align-items: center;
-           column-gap: 24px;
-
-           button{
-            display: block;
-            background-size: 33px 33px;
-            width:33px;
-            height: 33px;
-           }   
-        }
+    
+        .settings-page__settings{
+            margin:30px 14px 50px 14px;
+            .settings-title{
+               margin-bottom: 20px;
+               font-size: 30px;
+            }
         
-    }
-
-    .settings-page__buttons{
-        justify-content: center;
-        flex-grow: 0;
-        flex-shrink: 0;
-        column-gap: 16px;
-        .default-btn,.save-btn{
-            width:156px;
-            height: 56px;
-         }
-    }
-
-    .progress {
-        height: 4px;
-        width: 100%;
-        outline: none;
-        transition: background 450ms ease-in;
-        -webkit-appearance: none;
-        border-radius: 4.5px;
-        &::-webkit-slider-thumb {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            -webkit-appearance: none;
-            cursor: ew-resize;
-            background: #fff;
-            transition: 2s;
+            .settings-page__icons{
+                margin-top: 8px;
+                div{
+                    width: 28px;
+                    height: 28px;
+                }
+                .mute,.sound{
+                    background-size: 22px 16px;
+                }
+            }
+    
+            .settings__playing-for-time{
+                margin: 45px 0;
+            }
+    
+            .setting-time__content{
+               justify-content: center;
+               align-items: center;
+               column-gap: 24px;
+    
+               button{
+                display: block;
+                background-size: 33px 33px;
+                width:33px;
+                height: 33px;
+               }   
+            }
+            
+        }
+    
+        .settings-page__buttons{
+            justify-content: center;
+            column-gap: 16px;
+            .default-btn,.save-btn{
+                width:156px;
+                height: 56px;
+             }
         }
     }
-
+    
     .switch-block{
-        margin-top: 20px;
         justify-content: center;
-        column-gap: 16px;
-        height: 28px;
+    }
+
+    .p,p{
+        text-align: center;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: -0.6px;
     }
     
 }
